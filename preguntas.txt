@@ -1,0 +1,48 @@
+Daniel Luis Martín
+Preguntas LPP - práctica 5
+
+   2.1.) ¿Cuál es el error en el código del método para calcular el máximo común divisor?
+
+-El error del código es que devuelve el primer valor, 6 en este caso.
+-Para solucionarlo debemos cambiar la condición de parada del while antigua (v == 0) y poner que v sea distinto de 0 como condición (v != 0)
+
+
+
+
+   2.2.) ¿Qué comandos del depurador utilizó para detectarlo? Describa la sesión de depuración.
+   
+Para iniciar el debugger se utiliza el comando -rdebug gcd.rb. 
+
+Para detectar el fallo se crea un breakpoint en la línea 4 dentro del bucle con el comando b 4, que nos indica si se entra o no al mismo.
+-Con la condición errónea no se entra en el bucle.
+-Cambiando la condición a (v!=0) se puede apreciar que se llega al breakpoint y te muestra que ha entrado al bucle.
+
+#Sesión de depuración con la condición errónea
+gcd.rb:1:def gcd(u, v)
+(rdb:1) b 4
+Set breakpoint 1 at gcd.rb:4
+(rdb:1) n
+gcd.rb:9:puts gcd(6,3)
+(rdb:1) n
+6
+
+El n se utiliza para saltar de línea.
+
+#Sesión de depuración con la condición correcta
+gcd.rb:1:def gcd(u, v)
+(rdb:1) b 4
+Set breakpoint 1 at gcd.rb:4
+(rdb:1) n
+gcd.rb:9:puts gcd(6,3)
+(rdb:1) n
+Breakpoint 1, gcd at gcd.rb:4
+gcd.rb:4:    u, v = v, u % v
+(rdb:1) n
+gcd.rb:6:  u
+(rdb:1) n
+3
+
+
+
+   2.3.) Escriba la dirección 'HTTP' del repositorio que contiene el desarrollo de su práctica
+https://github.com/alu0100537093/prct05.git
